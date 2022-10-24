@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\views\NotFound\NotFound.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-19 21:50:12
+ * @LastEditTime: 2022-10-24 14:50:15
 -->
 <template>
   <div class="wscn-http404-container">
@@ -12,22 +12,22 @@
       <div class="pic-404">
         <img
           class="pic-404__parent"
-          src="src/assets/404_images/404.png"
+          src="../../assets/404_images/404.png"
           alt="404"
         />
         <img
           class="pic-404__child left"
-          src="src/assets/404_images/404_cloud.png"
+          src="../../assets/404_images/404_cloud.png"
           alt="404"
         />
         <img
           class="pic-404__child mid"
-          src="src/assets/404_images/404_cloud.png"
+          src="../../assets/404_images/404_cloud.png"
           alt="404"
         />
         <img
           class="pic-404__child right"
-          src="src/assets/404_images/404_cloud.png"
+          src="../../assets/404_images/404_cloud.png"
           alt="404"
         />
       </div>

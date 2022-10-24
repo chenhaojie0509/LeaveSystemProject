@@ -4,12 +4,12 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\store\userStore.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-21 10:25:43
+ * @LastEditTime: 2022-10-22 17:17:13
  */
 import { defineStore } from 'pinia'
 import { getUserMenu } from '../api/user';
 import useLocalStorage from '../hooks/useLocalStorage'
-import { UserMenuItem, UserTreeMenuItem, } from '../interface/menu'
+import { UserMenuItem, UserTreeMenuItem, INavItem } from '../interface/menu'
 import { getUserTreeMenus, flatter } from '../utils/index'
 
 export const userStore = defineStore('user', {
@@ -18,7 +18,8 @@ export const userStore = defineStore('user', {
       dark: false,
       collapse: false,
       userMenuList: [] as UserMenuItem[],
-      userRouters: [] as UserTreeMenuItem[]
+      userRouters: [] as UserTreeMenuItem[],
+      navList: [{ title: "首页", path: "/index/home" }] as INavItem[],
     }
   },
   actions: {
@@ -39,10 +40,50 @@ export const userStore = defineStore('user', {
      * @author: Post_Malone
      */
     async setUserRouters(userType: number) {
-      const { data  } = await getUserMenu(userType)
+      const { data } = await getUserMenu(userType)
       const menuList = data
       this.userMenuList = menuList
       this.userRouters = getUserTreeMenus(menuList)
+    },
+
+    /**
+     * @description: 关闭 nav 导航
+     * @param {number} index
+     * @return {*}
+     * @author: Post_Malone
+     */
+    closeNav(index: number) {
+      this.navList.splice(index, 1);
+    },
+
+    setNavList(path: string) {
+      let menuList: any[] = [];
+      const navItem = {} as INavItem;
+      this.userRouters.forEach((item: UserTreeMenuItem) => {
+        menuList.push(item.children)
+      })
+      // 扁平化，变成一维
+      menuList = flatter(menuList);
+      menuList.forEach((item: UserTreeMenuItem) => {
+        if (item && item.path == path) {
+          navItem.title = item.title;
+          navItem.path = item.path;
+        }
+      });
+      const isBeing = this.navList.some((item: INavItem) => item.path == navItem.path);
+      if (!isBeing && navItem && navItem.path) {
+        this.navList.push(navItem)
+      }
+    },
+    
+    /**
+     * @description: 关闭当前标签和首页标签之外的所有标签
+     * @return {*}
+     * @author: Post_Malone
+     */    
+    cloneOtherNav(currrentPath: string) {
+      this.navList = [{ title: "首页", path: "/index/home" }];
+      this.setNavList(currrentPath);
     },
   }
 })

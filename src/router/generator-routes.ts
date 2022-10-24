@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\router\generator-routes.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-19 16:28:58
+ * @LastEditTime: 2022-10-24 14:53:46
  */
 const Routes = [
   {
@@ -14,9 +14,10 @@ const Routes = [
     component: () => import('../components/ParentView/ParentView.vue'),
     children: [
       {
-        path: 'home',
-        name: 'Home',
-        component: () => import('../views/Home/Home.vue'),
+        path: "home",
+        name: "Home",
+        component: () =>
+          import("../views/Home/Home.vue"),
       },
     ],
   },

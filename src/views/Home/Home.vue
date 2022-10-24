@@ -2,12 +2,15 @@
  * @Author: Post_Malone
  * @Description: 
  * @Data: Do not edit
- * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\views\Index\index.vue
+ * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\views\Home\Home.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-19 16:10:34
+ * @LastEditTime: 2022-10-24 14:52:30
 -->
 <template>
-  <div>欢迎使用!!</div>
+  <h2>123</h2>
 </template>
 <script lang="ts" setup>
 </script>
+<style lang="">
+  
+</style>

@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\interface\menu.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-19 14:59:58
+ * @LastEditTime: 2022-10-22 17:01:42
  */
 export interface UserMenuItem {
   _id: string;
@@ -35,4 +35,9 @@ export interface IUserRouterItem {
   meta?: { icon: string };
   children?: IUserRouterItem[];
   component?: any;
+}
+
+export interface INavItem{
+  title:string,
+  path:string
 }
