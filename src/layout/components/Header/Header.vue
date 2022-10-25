@@ -4,10 +4,10 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\layout\components\Header\Header.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-24 16:03:23
+ * @LastEditTime: 2022-10-25 22:46:06
 -->
 <template>
-  <el-card class="header" :body-style="{ padding: '0px', height: '100%' }">
+  <el-card class="header" :body-style="{ padding: '0px', height: '100%' }" style="always">
     <el-row justify="space-between">
       <el-col :span="10">
         <div class="left" @click="changeCollapse">
@@ -15,12 +15,12 @@
             <Fold v-if="!store.collapse" color="#154ec1" />
             <Expand v-else color="#154ec1" />
           </el-icon>
-          <h4>学生请假管理系统</h4>
         </div>
+        <h4>学生请假管理系统</h4>
       </el-col>
       <el-col :span="2">
         <el-dropdown @command="handleCommand">
-          <el-avatar :size="30" :src="circleUrl" />
+          <el-avatar :size="30" />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item command="a">退出登录</el-dropdown-item>
@@ -38,14 +38,7 @@
         </el-icon>
       </span>
       <div class="tag-list" id="scroll-Box">
-        <VueDraggableNext animation="300" :list="store.navList">
-          <transition-group>
-            <el-tag
-              v-for="element of store.navList"
-              :key="element.path"
-              size="large"
-              :effect="element.path == current ? 'dark' : null"
-              :class="`tag-item ${
+        c`tag-item ${
                 element.path === current ? 'avtive-router' : ''
               }`"
               :closable="element.path !== '/index/home'"
@@ -104,6 +97,11 @@ const changeCollapse = () => {
 
 const collapseSwitchChange = () => {
   return `width: calc(100% - ${!store.collapse ? "200" : "60"}px);`;
+};
+
+const handleCommand = () => {
+  localStorage.clear();
+  router.go(0);
 };
 </script>
 

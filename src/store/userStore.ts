@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\store\userStore.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-22 17:17:13
+ * @LastEditTime: 2022-10-25 22:44:25
  */
 import { defineStore } from 'pinia'
 import { getUserMenu } from '../api/user';
@@ -19,7 +19,7 @@ export const userStore = defineStore('user', {
       collapse: false,
       userMenuList: [] as UserMenuItem[],
       userRouters: [] as UserTreeMenuItem[],
-      navList: [{ title: "首页", path: "/index/home" }] as INavItem[],
+      navList: [{ title: "首页", path: "/index/home" },{ title: "demo", path: "/index/demo" }] as INavItem[],
     }
   },
   actions: {
