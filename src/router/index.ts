@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\router\index.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-20 09:58:46
+ * @LastEditTime: 2022-10-26 13:59:45
  */
 import {
   createRouter,
@@ -27,6 +27,7 @@ const store = userStore(Pinia);
 const { getLocalStorage } = useLocalStorage()
 //路由拦截
 router.beforeEach(async (to, from, next) => {
+
   const token = getLocalStorage('token') || false
   const userType = getLocalStorage('userType')
   const username = getLocalStorage('username');
@@ -34,6 +35,7 @@ router.beforeEach(async (to, from, next) => {
 
   if (!token && to.name === 'Login') {
     //用户请求登陆页面   
+    store.userRouters = []
     next()
   }
   else if (!token && to.name !== 'Login') {
@@ -57,9 +59,10 @@ router.beforeEach(async (to, from, next) => {
       router.replace(to.path);
     }
     // 设置 nav
+    store.setNavList(to.fullPath);
+    next()
     // TODO 
 
-    next()
   }else if(!username){
     next({name:'Login'})
   }

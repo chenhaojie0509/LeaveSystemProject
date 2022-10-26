@@ -1,8 +1,18 @@
+<!--
+ * @Author: Post_Malone
+ * @Description: 
+ * @Data: Do not edit
+ * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\App.vue
+ * @LastEditors: chenhaojie
+ * @LastEditTime: 2022-10-25 10:45:08
+-->
 <script setup lang="ts">
 </script>
 
 <template>
-<router-view></router-view>
+<div>
+  <router-view></router-view>
+</div>
 </template>
 
 <style scoped>

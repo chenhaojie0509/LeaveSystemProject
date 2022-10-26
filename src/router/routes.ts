@@ -20,7 +20,7 @@ const Routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/home',
+    redirect:'/home',
     component: ()=>import('../layout/Layout.vue'),
     children: [
       {
@@ -35,9 +35,23 @@ const Routes: RouteRecordRaw[] = [
             component: () =>
               import("../views/Home/Home.vue"),
           },
+          {
+            path: "demo",
+            name: "Demo",
+            component: () =>
+              import("../views/Demo/Demo.vue"),
+          },
         ],
       },
-    ]
+    ],
+    // children:[
+    //   {
+    //     path: "/home",
+    //     name: "Home",
+    //     component: () =>
+    //       import("../views/Home/Home.vue"),
+    //   },
+    // ],
   },
   {
     path: "/:pathMatch(.*)*",

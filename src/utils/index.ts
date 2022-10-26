@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\utils\index.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-19 21:30:23
+ * @LastEditTime: 2022-10-26 16:04:44
  */
 import { RouteRecordRaw } from 'vue-router'
 import { UserMenuItem, UserTreeMenuItem } from '../interface/menu'
@@ -65,9 +65,11 @@ export const generateRouter = (treemenuList: UserTreeMenuItem[]) => {
       children: []
     }
     if (isParent) {
-      routes.redirect = router.children![0].path
-      routes.component = () => import(`../components/ParentView/ParentView.vue`)
+      routes.redirect = router.children![0].path;
+      routes.component = () =>
+        import(`../components/ParentView/ParentView.vue`)
     }
+
     // 递归处理子路由
     if (routes && router.children) {
       routes.children = generateRouter(router.children);
@@ -82,7 +84,7 @@ export const generateRouter = (treemenuList: UserTreeMenuItem[]) => {
  * @return {*}
  * @author: Post_Malone
  */
-export function flatter(target: any) {
+export function flatter(target: any) { 
   if (Array.isArray(target)) {
     let result: any = [];
     target.forEach((item) => {

@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\store\userStore.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-22 17:17:13
+ * @LastEditTime: 2022-10-26 17:01:17
  */
 import { defineStore } from 'pinia'
 import { getUserMenu } from '../api/user';
@@ -19,7 +19,7 @@ export const userStore = defineStore('user', {
       collapse: false,
       userMenuList: [] as UserMenuItem[],
       userRouters: [] as UserTreeMenuItem[],
-      navList: [{ title: "首页", path: "/index/home" }] as INavItem[],
+      navList: [{ title: "首页", path: "/index/home" }, { title: "demo", path: "/index/demo" }] as INavItem[],
     }
   },
   actions: {
@@ -65,22 +65,25 @@ export const userStore = defineStore('user', {
       // 扁平化，变成一维
       menuList = flatter(menuList);
       menuList.forEach((item: UserTreeMenuItem) => {
-        if (item && item.path == path) {
+        const navPath = '/index' + item.path
+        if (item && navPath == path) {
           navItem.title = item.title;
-          navItem.path = item.path;
+          navItem.path = navPath;
         }
       });
       const isBeing = this.navList.some((item: INavItem) => item.path == navItem.path);
       if (!isBeing && navItem && navItem.path) {
         this.navList.push(navItem)
       }
+
+
     },
-    
+
     /**
      * @description: 关闭当前标签和首页标签之外的所有标签
      * @return {*}
      * @author: Post_Malone
-     */    
+     */
     cloneOtherNav(currrentPath: string) {
       this.navList = [{ title: "首页", path: "/index/home" }];
       this.setNavList(currrentPath);

@@ -4,40 +4,45 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\layout\components\SideBar\SideBar.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-24 15:58:33
+ * @LastEditTime: 2022-10-26 14:15:29
 -->
 <template>
-  <div class="side-bar">
-    <el-menu
-      router
-      :collapse="store.collapse"
-      :default-active="current"
-      active-text-color="#fff"
-      class="el-menu-vertical-demo"
-      style="height: 100vh"
-      @select="selectMenu"
-    >
-      <el-menu-item index="/index/home" style="margin-top:2.5rem">
-        <el-icon><House /></el-icon>
-        <template #title>首页</template>
-      </el-menu-item>
-      <fragment v-for="(item, index) of store.userRouters" :key="index">
-        <MenuItem
-          :index="(index + 1).toString()"
-          :collapse="store.collapse"
-          :item="item"
-        />
-      </fragment>
-    </el-menu>
-  </div>
+  <!-- <div class="side-bar">
+    
+  </div> -->
+  <el-menu
+    router
+    :collapse="store.collapse"
+    :default-active="current"
+    active-text-color="#fff"
+    class="el-menu-vertical-demo"
+    @select="selectMenu"
+  >
+    <el-menu-item index="/index/home">
+      <el-icon><House /></el-icon>
+      <template #title>首页</template>
+    </el-menu-item>
+    <el-menu-item index="/index/demo">
+      <el-icon><Position /></el-icon>
+      <template #title>demo</template>
+    </el-menu-item>
+    <div v-for="(item, index) of store.userRouters" :key="index">
+      <MenuItem
+        :index="item.path"
+        :collapse="store.collapse"
+        :item="item"
+      />
+    </div>
+  </el-menu>
 </template>
 
 <script setup lang='ts'>
 import { useRouter } from "vue-router";
 import { ref, computed } from "vue";
-import MenuItem from "../MenuItem/MenuItem.vue";
 import Pinia from "../../../store/index";
 import { userStore } from "../../../store/userStore";
+
+import MenuItem from '../MenuItem/MenuItem.vue'
 
 const router = useRouter();
 const store = userStore(Pinia);
@@ -50,13 +55,12 @@ const current = computed(() => router.currentRoute.value.path);
 </script>
 
 <style lang="scss" scoped>
-.side-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
+.el-menu {
+  height: 100%;
+  border: none;
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 12rem;
+  width: 10rem;
   min-height: 25rem;
 }
 
