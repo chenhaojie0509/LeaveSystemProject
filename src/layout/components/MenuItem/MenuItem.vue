@@ -4,10 +4,10 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\layout\components\MenuItem\MenuItem.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-24 16:02:34
+ * @LastEditTime: 2022-10-26 16:04:14
 -->
 <template>
-  <el-sub-menu v-if="item.children && item.children.length > 1" :index="index + Date.now()">
+  <el-sub-menu v-if="item.children && item.children.length >= 1" :index="index">
     <template #title>
       <el-icon>
         <component :is="item.icon"></component>
@@ -15,13 +15,13 @@
       <span v-show="!collapse"> {{ item.title }}</span>
     </template>
     <div v-for="(c, i) of item.children" :key="i">
-      <menu-item :index="(i + 1).toString()" :item="c"></menu-item>
+      <MenuItem :index="index" :item="c"></MenuItem>
     </div>
   </el-sub-menu>
 
   <el-menu-item
     v-else-if="item.children && item.children.length === 1"
-    :index="item.children[0].path"
+    :index="item.children[0].title"
   >
     <el-icon>
       <component :is="item.children[0].icon"></component>
@@ -29,7 +29,7 @@
     <template #title> {{ item.children[0].title }}</template>
   </el-menu-item>
 
-  <el-menu-item v-else-if="item && item.pid !== 0" :index="item.path">
+  <el-menu-item v-else-if="item && item.pid !== 0" :index="`/index${item.path}`">
     <el-icon>
       <component :is="item.icon"></component>
     </el-icon>
@@ -50,11 +50,7 @@ const props = defineProps({
   item: Object,
   collapse: Boolean,
 });
-
 </script>
 
 <style lang="scss">
-:deep(.el-menu-item:hover) {
-  color: rgb(208, 220, 243)  !important;
-}
 </style>

@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\layout\Layout.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-25 22:01:41
+ * @LastEditTime: 2022-10-26 06:17:12
 -->
 <template>
   <div class="common-layout">
@@ -56,6 +56,7 @@ const store = userStore(Pinia);
   border-right: 0.05rem solid #dcdfe6;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
   overflow: hidden;
+  border: none;
   .aside-div {
     background-color: #fff;
     padding-top: 3rem;

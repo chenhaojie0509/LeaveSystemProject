@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\utils\index.ts
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-25 15:23:33
+ * @LastEditTime: 2022-10-26 16:04:44
  */
 import { RouteRecordRaw } from 'vue-router'
 import { UserMenuItem, UserTreeMenuItem } from '../interface/menu'
@@ -84,7 +84,7 @@ export const generateRouter = (treemenuList: UserTreeMenuItem[]) => {
  * @return {*}
  * @author: Post_Malone
  */
-export function flatter(target: any) {
+export function flatter(target: any) { 
   if (Array.isArray(target)) {
     let result: any = [];
     target.forEach((item) => {

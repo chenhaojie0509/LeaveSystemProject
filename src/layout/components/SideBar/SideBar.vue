@@ -4,7 +4,7 @@
  * @Data: Do not edit
  * @FilePath: \leaveSystemProject_servesd:\JavaScriptWorkspace\leaveSystemProject\src\layout\components\SideBar\SideBar.vue
  * @LastEditors: chenhaojie
- * @LastEditTime: 2022-10-25 22:47:02
+ * @LastEditTime: 2022-10-26 14:15:29
 -->
 <template>
   <!-- <div class="side-bar">
@@ -28,7 +28,7 @@
     </el-menu-item>
     <div v-for="(item, index) of store.userRouters" :key="index">
       <MenuItem
-        :index="(index + 1).toString()"
+        :index="item.path"
         :collapse="store.collapse"
         :item="item"
       />
@@ -39,9 +39,10 @@
 <script setup lang='ts'>
 import { useRouter } from "vue-router";
 import { ref, computed } from "vue";
-import MenuItem from "../MenuItem/MenuItem.vue";
 import Pinia from "../../../store/index";
 import { userStore } from "../../../store/userStore";
+
+import MenuItem from '../MenuItem/MenuItem.vue'
 
 const router = useRouter();
 const store = userStore(Pinia);
